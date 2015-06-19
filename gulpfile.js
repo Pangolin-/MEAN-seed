@@ -7,17 +7,17 @@ var sh = require('shelljs');
 var watch = require('gulp-watch');
 var inject = require('gulp-inject');
 var minifyHTML = require('gulp-minify-html');
-var mainBowerFiles = require("main-bower-files");
+var mainBowerFiles = require('main-bower-files');
 var browserSync = require('browser-sync');
 var templateCache = require('gulp-angular-templatecache');
-var $ = require("gulp-load-plugins")();
+var $ = require('gulp-load-plugins')();
 
 var paths = {
-  sass: ['./public/scss/*.scss'],
-  js: ['public/js/*.js'],
-  html: ['public/views/*.html'],
-  app: ['public/js/app.js'],
-  main: ['public/index.html']
+  sass: ['dev/scss/*.scss'],
+  js: ['dev/js/*.js'],
+  html: ['dev/views/*.html'],
+  app: ['dev/js/app.js'],
+  main: ['dev/index.html']
 };
 
 gulp.task('default', ['sass', 'img', 'js', 'views', 'index', 'move-lib', 'move-bower', 'css']);
@@ -38,27 +38,27 @@ gulp.task('watch', ['default'], function () {
 });
 
 gulp.task('views', function() {
-  return gulp.src('./public/views/*.html')
+  return gulp.src('./dev/views/*.html')
     .pipe(gulp.dest('./www/views/'))
 });
 
 gulp.task('index', function() {
-  return gulp.src('./public/index.html')
+  return gulp.src('./dev/index.html')
     .pipe(gulp.dest('./www/'))
 });
 
 gulp.task('move-lib', function() {
-  return gulp.src('public/libs/**/*.*')
+  return gulp.src('dev/libs/**/*.*')
     .pipe(gulp.dest('./www/libs/'))
 });
 
 gulp.task('css', function() {
-  return gulp.src('public/css/**.*')
+  return gulp.src('dev/css/**.*')
     .pipe(gulp.dest('www/css/'))
 })
 
 gulp.task('sass', function(done) {
-  gulp.src('./public/scss/main.scss')
+  gulp.src('./dev/scss/main.scss')
     .pipe($.sass())
     .pipe($.csso())
     .pipe($.concat('style.css'))
@@ -67,16 +67,16 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('move-bower', function() {
-  return gulp.src('./public/bower_components/**/**.*')
+  return gulp.src('./dev/bower_components/**/**.*')
     .pipe(gulp.dest('./www/bower_components/'))
 })
 
 gulp.task('img', function() {
-  return gulp.src('./public/img/**/**.*')
+  return gulp.src('./dev/img/**/**.*')
     .pipe(gulp.dest('./www/img'))
 })
 
 gulp.task('js', function() {
-  return gulp.src('./public/js/**/*.*')
+  return gulp.src('./dev/js/**/*.*')
     .pipe(gulp.dest('./www/js'));
 });
