@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('dbUser', {
+module.exports = mongoose.model('user', {
     name : {type : String, default: ''}
 });

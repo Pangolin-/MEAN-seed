@@ -14,7 +14,7 @@ var $ = require('gulp-load-plugins')();
 
 var paths = {
   sass: ['dev/scss/*.scss'],
-  js: ['dev/js/*.js'],
+  js: ['dev/js/**/*.js'],
   html: ['dev/views/*.html'],
   app: ['dev/js/app.js'],
   main: ['dev/index.html']
@@ -58,7 +58,7 @@ gulp.task('css', function() {
 })
 
 gulp.task('sass', function(done) {
-  gulp.src('./dev/scss/main.scss')
+  gulp.src('./dev/scss/style.scss')
     .pipe($.sass())
     .pipe($.csso())
     .pipe($.concat('style.css'))

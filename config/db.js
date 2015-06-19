@@ -1,3 +1,3 @@
 module.exports = {
-	url : 'mongodb://localhost/pango'
+	url : 'mongodb://pango:shell@localhost/pango'
 }

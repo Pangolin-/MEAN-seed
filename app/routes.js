@@ -16,6 +16,6 @@ module.exports = function(app) {
 	
 	//Front-end routes
 	app.get('*', function(req, res) {
-		res.sendfile('./public/views/index.html'); // load our public/index.html file
+		res.sendfile('./www/index.html'); // load our public/index.html file
 	});
 }

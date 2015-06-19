@@ -7,11 +7,12 @@ angular
 				controller: 'HomeCtrl'
 			})
 			
-			.when('/user/list', {
+			.when('/users/', {
 				templateUrl: 'views/userList.html',
 				controller: 'UserCtrl'
 			})
 			
-		$locationProvider.html5Mode(true);
+		$locationProvider
+			.html5Mode(false);
 			
 	}])
