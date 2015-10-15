@@ -1,0 +1,25 @@
+$nav-height: 40px;
+$mobile-nav-height: 15vh;
+
+%centerX {
+	display: block;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+}
+%centerY {
+	display: block;
+	position: relative;
+	top: 50%;
+	transform: translatey(-50%);
+	-webkit-transform: translateY(-50%);
+}
+%centerAll {
+	display: block;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
