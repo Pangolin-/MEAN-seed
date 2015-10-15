@@ -1,0 +1,32 @@
+.nav-wrapper {
+	background: #E6E6E6;
+	padding: 0 0 0 15px;
+	height: $nav-height;
+	max-width: calc(100% + 15px);
+	border-bottom: 1px solid #ddd;
+	.nav-tabs {
+		border: 0px;
+		li {
+			&.active {
+				background-color: rgba(255,255,255,0.5)
+			}
+			& > a {
+				margin: -1px;
+				color: #444;
+				transition: 0.5s ease all;
+				-webkit-transition: 0.5s ease all;
+				border-right: 1px solid #ddd;
+			}
+		}
+		li:not(.active) {
+			a:hover {
+			transition: 0.5s ease all;
+			-webkit-transition: 0.25s ease all;
+			background-color: rgba(0,0,0,0.1);
+			}
+		}
+	}
+	.right {
+		height: 100%;
+	}
+}

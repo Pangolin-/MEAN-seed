@@ -1,13 +1,11 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var bower = require('bower');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var watch = require('gulp-watch');
 var inject = require('gulp-inject');
 var minifyHTML = require('gulp-minify-html');
-var mainBowerFiles = require('main-bower-files');
 var browserSync = require('browser-sync');
 var templateCache = require('gulp-angular-templatecache');
 var $ = require('gulp-load-plugins')();
@@ -17,10 +15,12 @@ var paths = {
   js: ['dev/js/**/*.js'],
   html: ['dev/views/*.html'],
   app: ['dev/js/app.js'],
-  main: ['dev/index.html']
+  main: ['dev/index.html'],
+  assets: ['dev/assets/**/*'],
+  libs: ['dev/libs/**/*']
 };
 
-gulp.task('default', ['sass', 'img', 'js', 'views', 'index', 'move-lib', 'move-bower', 'css']);
+gulp.task('default', ['sass', 'assets', 'js', 'views', 'index', 'move-lib']);
 
 gulp.task('watch', ['default'], function () {
   browserSync({
@@ -35,6 +35,8 @@ gulp.task('watch', ['default'], function () {
   gulp.watch(paths.js, ['js'])
   gulp.watch(paths.html, ['views'])
   gulp.watch(paths.main, ['index'])
+  gulp.watch(paths.assets, ['assets'])
+  gulp.watch(paths.libs, ['move-lib'])
 });
 
 gulp.task('views', function() {
@@ -52,11 +54,6 @@ gulp.task('move-lib', function() {
     .pipe(gulp.dest('./www/libs/'))
 });
 
-gulp.task('css', function() {
-  return gulp.src('dev/css/**.*')
-    .pipe(gulp.dest('www/css/'))
-})
-
 gulp.task('sass', function(done) {
   gulp.src('./dev/scss/style.scss')
     .pipe($.sass())
@@ -66,14 +63,9 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('move-bower', function() {
-  return gulp.src('./dev/bower_components/**/**.*')
-    .pipe(gulp.dest('./www/bower_components/'))
-})
-
-gulp.task('img', function() {
-  return gulp.src('./dev/img/**/**.*')
-    .pipe(gulp.dest('./www/img'))
+gulp.task('assets', function() {
+  return gulp.src('./dev/assets/**/*.*')
+    .pipe(gulp.dest('./www/assets'))
 })
 
 gulp.task('js', function() {

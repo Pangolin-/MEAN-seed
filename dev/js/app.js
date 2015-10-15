@@ -1,2 +1,2 @@
  var pangolin = angular
-	.module('pangolin', ['ngRoute', 'ui.bootstrap'])
+	.module('pangolin', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
